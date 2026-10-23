@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0A0A0F">
+  <title>TOURNAMENT PRO</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h2>🎮 TOURNAMENT PRO</h2>
+  <p>Compete • Win • Repeat</p>
+  <button id="adminButton">Admin Login</button>
+</header>
+
+<nav>
+  <button data-page="home">Home</button>
+  <button data-page="tournaments">Tournaments</button>
+  <button data-page="matches">My Matches</button>
+  <button data-page="profile">Profile</button>
+  <button data-page="about">About</button>
+</nav>
+
+<main>
+  <section id="home" class="page active">
+    <h2>Welcome, Gamer!</h2>
+    <p>Join tournaments and compete with players.</p>
+    <div id="gameList" class="grid"></div>
+    <h3>Available Tournaments</h3>
+    <div id="homeTournaments"></div>
+  </section>
+
+  <section id="tournaments" class="page">
+    <h2>🏆 Tournaments</h2>
+    <div id="tournamentList"></div>
+  </section>
+
+  <section id="matches" class="page">
+    <h2>🎯 My Matches</h2>
+    <div id="myMatches"></div>
+  </section>
+
+  <section id="profile" class="page">
+    <h2>👤 Player Registration</h2>
+    <form id="profileForm">
+      <label>Your Name</label>
+      <input id="playerName" required maxlength="50">
+
+      <label>In-Game Name</label>
+      <input id="gameName" required maxlength="50">
+
+      <label>Game UID</label>
+      <input id="gameUid" required maxlength="40">
+
+      <label>Choose Game</label>
+      <select id="playerGame">
+        <option>Free Fire</option>
+        <option>BGMI</option>
+        <option>Call of Duty Mobile</option>
+        <option>Other</option>
+      </select>
+      <button type="submit">Save Profile</button>
+    </form>
+    <p id="profileStatus"></p>
+  </section>
+
+  <section id="about" class="page">
+    <h2>About Tournament Pro</h2>
+    <p>Join gaming competitions and track your matches.</p>
+    <h3>UPI Payment</h3>
+    <p id="upiInfo">Ask the tournament administrator for payment instructions.</p>
+    <h3>Rules</h3>
+    <ul>
+      <li>Register before the tournament deadline.</li>
+      <li>Submit the correct transaction reference.</li>
+      <li>Use the correct Game UID.</li>
+      <li>Cheating is prohibited.</li>
+      <li>Room details are for approved players only.</li>
+    </ul>
+  </section>
+
+  <section id="payment" class="page">
+    <h2>💳 Tournament Payment</h2>
+    <div id="paymentTournament"></div>
+    <form id="paymentForm">
+      <label>UPI Transaction Reference / UTR</label>
+      <input id="utr" required minlength="6" maxlength="40">
+      <label>Payment amount (₹)</label>
+      <input id="paymentAmount" type="number" min="1" required>
+      <button type="submit">Submit for Verification</button>
+    </form>
+    <p id="paymentStatus"></p>
+  </section>
+
+  <section id="admin" class="page">
+    <h2>🛡️ Admin Panel</h2>
+    <button id="logoutButton">Logout</button>
+
+    <h3>Create Tournament</h3>
+    <form id="tournamentForm">
+      <label>Tournament Name</label>
+      <input id="tName" required maxlength="80">
+      <label>Game</label>
+      <select id="tGame">
+        <option>Free Fire</option>
+        <option>BGMI</option>
+        <option>Call of Duty Mobile</option>
+        <option>Other</option>
+      </select>
+      <label>Mode</label>
+      <select id="tMode">
+        <option>Solo</option>
+        <option>Duo</option>
+        <option>Squad</option>
+      </select>
+      <label>Entry Fee (₹)</label>
+      <input id="tFee" type="number" min="0" required>
+      <label>Prize Pool (₹)</label>
+      <input id="tPrize" type="number" min="0" required>
+      <label>Match Date & Time</label>
+      <input id="tDate" type="datetime-local" required>
+      <label>Maximum Players</label>
+      <input id="tCapacity" type="number" min="1" max="1000" value="50" required>
+      <button type="submit">Create Tournament</button>
+    </form>
+
+    <h3>UPI Settings</h3>
+    <form id="upiForm">
+      <label>UPI ID</label>
+      <input id="upiId" placeholder="yourname@bank" required>
+      <button type="submit">Save UPI ID</button>
+    </form>
+
+    <h3>Payment Verification</h3>
+    <div id="adminPayments"></div>
+
+    <h3>Manage Tournaments & Room Details</h3>
+    <div id="adminTournaments"></div>
+
+    <h3>Post Results</h3>
+    <form id="resultForm">
+      <label>Tournament</label>
+      <select id="resultTournament"></select>
+      <label>Player In-Game Name</label>
+      <input id="resultPlayer" required>
+      <label>Position / Rank</label>
+      <input id="resultRank" required>
+      <label>Score / Kills</label>
+      <input id="resultScore" required>
+      <button type="submit">Publish Result</button>
+    </form>
+    <div id="resultsList"></div>
+  </section>
+</main>
+
+<dialog id="loginDialog">
+  <form id="loginForm">
+    <h3>Admin Login</h3>
+    <label>Username</label>
+    <input id="adminUsername" required autocomplete="username">
+    <label>Password</label>
+    <input id="adminPassword" type="password" required
+           autocomplete="current-password">
+    <button type="submit">Login</button>
+    <button type="button" id="cancelLogin">Cancel</button>
+  </form>
+</dialog>
+
+<div id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
+
+        
